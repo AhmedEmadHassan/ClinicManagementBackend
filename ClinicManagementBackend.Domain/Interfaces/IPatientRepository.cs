@@ -1,10 +1,10 @@
-﻿using ClinicManagementBackend.Domain.Entities;
+using ClinicManagementBackend.Domain.Entities;
 
-namespace ClinicManagementBackend.Domain.Interfaces
+namespace ClinicManagementBackend.Domain.Interfaces;
+
+public interface IPatientRepository
 {
-    public interface IPatientRepository
-    {
-        Task<Patient?> GetByIdAsync(Guid id);
-        Task AddAsync(Patient patient);
-    }
+    Task<Patient?> GetByIdAsync(Guid id);
+    Task<IReadOnlyList<Patient>> GetAllAsync();
+    Task AddAsync(Patient patient);
 }
