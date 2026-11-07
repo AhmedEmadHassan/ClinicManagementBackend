@@ -1,6 +1,51 @@
-@ClinicManagementBackend_API_HostAddress = http://localhost:5192
+@HostAddress = http://localhost:5192
 
-GET {{ClinicManagementBackend_API_HostAddress}}/weatherforecast/
-Accept: application/json
+### 1. Register a Doctor
+POST {{HostAddress}}/api/doctors
+Content-Type: application/json
 
-###
+{
+  "fullName": "Dr. Sarah Jenkins",
+  "specialization": "Cardiology",
+  "maxDailyAppointments": 20
+}
+
+### 2. Get All Doctors
+GET {{HostAddress}}/api/doctors
+
+### 3. Register a Patient
+POST {{HostAddress}}/api/patients
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "phoneNumber": "+1234567890"
+}
+
+### 4. Get All Patients
+GET {{HostAddress}}/api/patients
+
+### 5. Book an Appointment (replace doctorId & patientId with real Guids)
+POST {{HostAddress}}/api/appointments
+Content-Type: application/json
+
+{
+  "doctorId": "00000000-0000-0000-0000-000000000000",
+  "patientId": "00000000-0000-0000-0000-000000000000",
+  "date": "2026-11-06"
+}
+
+### 6. Patient Arrives - Physical Check-In (assigns QueueNumber)
+POST {{HostAddress}}/api/appointments/00000000-0000-0000-0000-000000000000/check-in
+
+### 7. View Daily Queue for a Doctor
+GET {{HostAddress}}/api/appointments/queue?doctorId=00000000-0000-0000-0000-000000000000&date=2026-11-06
+
+### 8. Skip Absent Patient
+POST {{HostAddress}}/api/appointments/00000000-0000-0000-0000-000000000000/skip
+
+### 9. Complete Consultation
+POST {{HostAddress}}/api/appointments/00000000-0000-0000-0000-000000000000/complete
+
+### 10. Cancel Appointment
+POST {{HostAddress}}/api/appointments/00000000-0000-0000-0000-000000000000/cancel
