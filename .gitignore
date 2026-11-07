@@ -480,3 +480,8 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+
+# Private developer drafts and scratchpad
+[Dd]raft/
+[Dd]rafts/
