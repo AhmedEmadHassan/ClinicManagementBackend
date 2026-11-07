@@ -2,6 +2,7 @@ using ClinicManagementBackend.Application.Interfaces;
 using ClinicManagementBackend.Application.Services;
 using ClinicManagementBackend.Infrastructure;
 using ClinicManagementBackend.Infrastructure.Data;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,7 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference(); // Interactive API UI at: /scalar/v1
 }
 
 app.UseHttpsRedirection();
